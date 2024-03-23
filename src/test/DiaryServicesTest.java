@@ -70,6 +70,7 @@ public class DiaryServicesTest{
         LoginRequest loginRequest=new LoginRequest("user name", "pass1");
         assertThrows(IncorrectPasswordException.class, ()->diaryService.logIn(loginRequest));
         loginRequest.setPassword("pass");
+
         diaryService.logIn(loginRequest);
         assertThrows(InvalidDetailsException.class, ()->diaryService.deleteEntry(deleteEntryRequest));
     }
@@ -82,10 +83,11 @@ public class DiaryServicesTest{
         request1.setTitle("name");
         request1.setbody("body of whatever");
         diaryService.craeateEntry(request1);
+        assertEquals(1, diaryService.countEntries());
         EntryRequest entryRequest=new EntryRequest( );
         entryRequest.setbody("body");
         entryRequest.setTitle("name");
-        entryRequest.setUserName("user name");
+        entryRequest.setUserName("user name1");
         assertThrows(DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setUserName("user name");
         assertEquals(String.format("""

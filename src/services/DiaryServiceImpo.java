@@ -7,8 +7,8 @@ import repositories.EntryRepo;
 import repositories.EntryRepoImpo;
 
 public class DiaryServiceImpo implements DiaryServices{
-    private final DiaryRepo repo=new DiaryRepoImpo( );
-    private final EntryRepo entryRepo=new EntryRepoImpo( );
+    private final DiaryRepo repo = new DiaryRepoImpo( );
+    private final EntryRepo entryRepo = new EntryRepoImpo();
     public Diary createDiary(RegisterDiary request){
         validate(request);
         Diary diary=new Diary( );
@@ -80,6 +80,5 @@ public class DiaryServiceImpo implements DiaryServices{
         }
         return entryRepo.update(request);
     }
-
 }
 
