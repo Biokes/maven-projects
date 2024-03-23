@@ -18,6 +18,8 @@ public class DiaryServicesTest{
     public void createDiary_testDiaryIsCreated(){
         RegisterDiary request=new RegisterDiary("user name", "pass");
         diaryService.createDiary(request);
+        RegisterDiary request1 = request;
+        assertThrows(UserAlreadyExistException.class,()->diaryService.createDiary(request1));
         Assertions.assertEquals(1, diaryService.count( ));
         request=new RegisterDiary("", "pass");
         RegisterDiary finalRequest=request;

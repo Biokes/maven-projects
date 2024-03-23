@@ -20,6 +20,9 @@ public class DiaryServiceImpo implements DiaryServices{
     private void validate(RegisterDiary request){
         if( request.getUserName( ).isEmpty( )||request.getPassword( ).isEmpty( ) )
             throw new InvalidDetailsException( );
+       for(Diary diary : repo.findAll( )){
+           if(diary.getUserName().equalsIgnoreCase(request.getUserName()))
+       }
     }
     public int count(){
         return repo.count( );

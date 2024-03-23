@@ -18,7 +18,8 @@ public class DiaryControllerTest{
         request=new RegisterDiary("", "pass");
         RegisterDiary finalRequest = request;
         request=new RegisterDiary("user name1", "");
-        assertEquals("User Already Exist.",controller.createDiary(request));
+        assertEquals("Invalid Username or Password was Provided",controller.createDiary(request));
+
     }
     @Test public void testLogInAndLogOutProperly(){}
     @Test public void testCreateEntryAndDeleteEntryProperly(){}
