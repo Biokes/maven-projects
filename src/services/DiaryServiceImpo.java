@@ -56,8 +56,7 @@ public class DiaryServiceImpo implements DiaryServices{
     public Diary findDiaryBy(String username){
         if( repo.findByUserName(username)==null )
             throw new DiaryNotFoundException( );
-        Diary diary1=repo.findByUserName(username);
-        return diary1;
+        return repo.findByUserName(username);
     }
 
     public int countEntries(){
@@ -88,18 +87,9 @@ public class DiaryServiceImpo implements DiaryServices{
     }
 
     public String updateEntry(EntryRequest request){
-        if( !findDiaryBy(request.getTitle( )).isLocked( ) ){
+        if( findDiaryBy(request.getTitle( )).isLocked( ) ){
             return entryRepo.update(request);
 
-//            for( Diary diary : repo.findAll( ) )
-//                if( diary.getUserName( ).equals(request.get( )) ){
-//                    for( Entry entry : entryRepo.findAll( ) ){
-//                        if( entry.getId( )==request.getId( ) )
-//                            entryRepo.deleteEntryById(entry.getId( ));
-//                        return;
-//                    }
-//                }
-//            throw new InvalidDetailsException( );
         }
         throw new DiaryIsLockedException( );
     }
