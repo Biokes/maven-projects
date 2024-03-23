@@ -13,4 +13,11 @@ public class DiaryController{
     public int count(){
         return services.count();
     }
+
+    public String logIn(LoginRequest loginRequest){
+        try{
+            services.logIn(loginRequest);
+        }catch( DiaryNotFoundException error){return error.getMessage();}
+        return "log in successful";
+    }
 }
