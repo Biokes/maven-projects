@@ -9,7 +9,6 @@ import repositories.EntryRepoImpo;
 public class DiaryServiceImpo implements DiaryServices{
     private final DiaryRepo repo=new DiaryRepoImpo( );
     private final EntryRepo entryRepo=new EntryRepoImpo( );
-
     public Diary createDiary(RegisterDiary request){
         validate(request);
         Diary diary=new Diary( );
@@ -18,16 +17,13 @@ public class DiaryServiceImpo implements DiaryServices{
         diary=repo.save(diary);
         return diary;
     }
-
     private void validate(RegisterDiary request){
         if( request.getUserName( ).isEmpty( )||request.getPassword( ).isEmpty( ) )
             throw new InvalidDetailsException( );
     }
-
     public int count(){
         return repo.count( );
     }
-
     public void logIn(LoginRequest loginRequest){
         if( repo.findByUserName(loginRequest.getUserName( ))==null )
             throw new DiaryNotFoundException( );
@@ -35,7 +31,6 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new IncorrectPasswordException( );
         repo.findByUserName(loginRequest.getUserName( )).isLocked(false);
     }
-
     public void deleteDiary(RegisterDiary request){
         validate(request);
         if( null==repo.findByUserName(request.getUserName( )) )
@@ -50,7 +45,6 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new InvalidDetailsException( );
         repo.findByUserName(userName).isLocked(true);
     }
-
     public Diary findDiaryBy(String username){
         if( repo.findByUserName(username)==null )
             throw new DiaryNotFoundException( );
