@@ -84,7 +84,7 @@ public class DiaryServicesTest{
         diaryService.craeateEntry(request1);
         EntryRequest entryRequest=new EntryRequest( );
         entryRequest.setbody("body");
-        entryRequest.setTitle("Title");
+        entryRequest.setTitle("name");
         entryRequest.setUserName("user name");
         assertThrows(DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setUserName("user name");
@@ -92,7 +92,7 @@ public class DiaryServicesTest{
                         Entry id : %s
                         Title : %s
                         Body : %s
-                        Date Created : %s.""", 1, "Title", "body", "23/03/2024"),
+                        Date Created : %s.""", 1, "name", "body", "23/03/2024"),
                 diaryService.updateEntry(entryRequest));
     }
 }

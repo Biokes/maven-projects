@@ -39,16 +39,15 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new IncorrectPasswordException( );
         repo.deleteDiary(findDiaryBy(request.getUserName( )));
     }
-
     public void logOut(String userName){
         if( repo.findByUserName(userName)==null )
             throw new InvalidDetailsException( );
         repo.findByUserName(userName).isLocked(true);
     }
     public Diary findDiaryBy(String username){
-        if( repo.findByUserName(username)==null )
-            throw new DiaryNotFoundException( );
-        return repo.findByUserName(username);
+        if( repo.findByUserName(username) != null )
+            return repo.findByUserName(username);
+        throw new DiaryNotFoundException( );
     }
     public int countEntries(){
         return entryRepo.count( );
@@ -62,12 +61,12 @@ public class DiaryServiceImpo implements DiaryServices{
         entryRepo.save(entry);
     }
     public void deleteEntry(DeleteEntryRequest request){
-        if( !findDiaryBy(request.getUserName( )).isLocked( ) ){
-            for( Diary diary : repo.findAll( ) )
-                if( diary.getUserName( ).equals(request.getUserName( )) ){
-                    for( Entry entry : entryRepo.findAll( ) ){
-                        if( entry.getId( )==request.getId( ) )
-                            entryRepo.deleteEntryById(entry.getId( ));
+        if(!findDiaryBy(request.getUserName()).isLocked()){
+            boolean usernameMatch = findDiaryBy(request.getUserName()).getUserName().equalsIgnoreCase(request.getUserName());
+            if(usernameMatch){
+                    for( Entry entry : entryRepo.findAll()){
+                        if( entry.getId() == request.getId())
+                            entryRepo.deleteEntryById(entry.getId());
                         return;
                     }
                 }

@@ -17,7 +17,7 @@ public class EntryRepoImpo implements EntryRepo{
         for( Entry entry : findAll( ) ){
             if( entry.getTitle( ).equalsIgnoreCase(entryRequest.getTitle( ) )){
                 entry.setBody(entryRequest.getBody( ));
-                entry.setTitle(entryRequest.getTitle( ));
+                entry.setId(entry.getId());
                 return entry.toString( );
             }
         }
