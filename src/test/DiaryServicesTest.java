@@ -86,7 +86,7 @@ public class DiaryServicesTest{
         entryRequest.setbody("body");
         entryRequest.setTitle("Title");
         entryRequest.setUserName("user name1");
-        assertThrows(InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
+        assertThrows(DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setUserName("user name");
         assertEquals(String.format("""
                         Entry id : %s
