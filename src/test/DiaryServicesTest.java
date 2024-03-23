@@ -96,6 +96,5 @@ public class DiaryServicesTest{
                         Title : %s
                         Body : %s
                         Date Created : %s.""", 1, "Title", "body", "23/03/2024"), diaryService.updateEntry(entryRequest);
-);
     }
 }
