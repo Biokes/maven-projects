@@ -5,6 +5,14 @@ public class EntryRequest{
     private String title;
     private String body;
     private int id;
+    public EntryRequest(){
+
+    }
+
+    public EntryRequest(String title, String body){
+        setTitle(title);
+        setbody(body);
+    }
 
     public String getUserName(){
         return userName;

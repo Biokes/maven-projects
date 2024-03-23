@@ -1,3 +1,4 @@
+import dtos.EntryRequest;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.Assert.assertEquals;
@@ -13,7 +14,6 @@ public class DiaryControllerTest{
         RegisterDiary request=new RegisterDiary("user name1", "pass");
         controller.createDiary(request);
        assertEquals(1, controller.count( ));
-        request=new RegisterDiary("", "pass");
         request=new RegisterDiary("user name1", "");
         assertEquals("Invalid Username or Password was Provided",controller.createDiary(request));
         request=new RegisterDiary("user name1", "password");
@@ -31,9 +31,17 @@ public class DiaryControllerTest{
         assertEquals("Incorrect password",controller.logIn(loginRequest));
         loginRequest = new LoginRequest("user ", "pas1s");
         assertEquals("Diary not found.",controller.logIn(loginRequest));
-        assertEquals("Log out successful", controller.logOut("user name1"));
-
+        assertEquals("log out successful", controller.logOut("user name1"));
     }
-    @Test public void testCreateEntryAndDeleteEntryProperly(){}
+    @Test public void testCreateEntryAndDeleteEntryProperly(){
+        RegisterDiary request=new RegisterDiary("user name1", "pass");
+        controller.createDiary(request);
+        assertEquals("User Already Exist",controller.createDiary(request));
+        assertEquals("log out successful", controller.logOut("user name1"));
+        LoginRequest loginRequest = new LoginRequest("user name1", "pass");
+        assertEquals("log in successful",controller.logIn(loginRequest));
+        EntryRequest entry = new EntryRequest("Title","Body");
+        assertEquals("Entry created successfully", controller.createEntry(entry));
+    }
     @Test public void testUpdateEntryProperly(){}
 }

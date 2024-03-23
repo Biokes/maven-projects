@@ -56,13 +56,14 @@ public class DiaryServiceImpo implements DiaryServices{
     public int countEntries(){
         return entryRepo.count( );
     }
-    public void craeateEntry(EntryRequest request){
+    public String craeateEntry(EntryRequest request){
         Entry entry=new Entry( );
         entry.setTitle(request.getTitle( ));
         entry.setBody(request.getBody( ));
         int id = entryRepo.count();
         entry.setId(++id);
-        entryRepo.save(entry);
+        return entryRepo.save(entry);
+
     }
     public void deleteEntry(DeleteEntryRequest request){
         if(!findDiaryBy(request.getUserName()).isLocked()){

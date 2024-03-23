@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 public class EntryRepoImpo implements EntryRepo{
     private final List<Entry> entries=new ArrayList<>( );
-    public void save(Entry entry){
+    public String save(Entry entry){
         entries.add(entry);
+        return entry.toString();
     }
     public int count(){
         return entries.size( );

@@ -1,3 +1,5 @@
+import dtos.EntryRequest;
+
 public class DiaryController{
     private DiaryServices services = new DiaryServiceImpo();
 
@@ -30,5 +32,15 @@ public class DiaryController{
         }
         System.out.println("log out successful");
         return "log out successful";
+    }
+
+    public String createEntry(EntryRequest entry){
+        try{
+        String output = services.craeateEntry(entry);
+        }catch(DiaryNotFoundException error ){
+            System.out.println(error.getMessage( ));
+            return error.getMessage();
+        }
+        return "Entry created successfully";
     }
 }

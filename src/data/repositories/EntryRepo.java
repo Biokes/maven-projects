@@ -6,7 +6,7 @@ import moodels.Entry;
 import java.util.List;
 
 public interface EntryRepo{
-    void save(Entry entry);
+    String save(Entry entry);
 
     int count();
 
