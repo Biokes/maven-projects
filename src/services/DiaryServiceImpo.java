@@ -22,6 +22,7 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new InvalidDetailsException( );
        for(Diary diary : repo.findAll( )){
            if(diary.getUserName().equalsIgnoreCase(request.getUserName()))
+               throw new UserAlreadyExistException();
        }
     }
     public int count(){
