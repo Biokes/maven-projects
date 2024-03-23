@@ -29,6 +29,12 @@ public class Entry{
     public int getId(){
         return id;
     }
+    public LocalDate getDateCreated(){
+        return this.date;
+    }
+    public void setDateCreated(LocalDate dateGiven){
+        this.date  = dateGiven;
+    }
 
     public void setId(int id){
         this.id=id;

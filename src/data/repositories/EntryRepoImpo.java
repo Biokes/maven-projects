@@ -14,10 +14,13 @@ public class EntryRepoImpo implements EntryRepo{
     }
     @Override
     public String update(EntryRequest entryRequest){
+        Entry entryTemp = new Entry();
         for( Entry entry : findAll( ) ){
             if( entry.getTitle( ).equalsIgnoreCase(entryRequest.getTitle( ) )){
-                entry.setBody(entryRequest.getBody( ));
-                entry.setId(entry.getId());
+                entryTemp.setBody(entryRequest.getBody( ));
+                entryTemp.setId(entry.getId());
+                entryTemp.setDateCreated(entry.getDateCreated());
+                entryTemp.setTitle(entry.getTitle( ));
                 return entry.toString( );
             }
         }
@@ -25,7 +28,7 @@ public class EntryRepoImpo implements EntryRepo{
     }
     public void deleteEntryById(int id){
         for( Entry entry : entries )
-            if( entry.getId( )==id ){
+            if( entry.getId()==id ){
                 entries.remove(entry);
                 return;
             }

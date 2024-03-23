@@ -56,8 +56,8 @@ public class DiaryServiceImpo implements DiaryServices{
         Entry entry=new Entry( );
         entry.setTitle(request.getTitle( ));
         entry.setBody(request.getBody( ));
-        int id = entryRepo.count( )+1;
-        entry.setId(100 + id);
+        int id = entryRepo.count();
+        entry.setId(++id);
         entryRepo.save(entry);
     }
     public void deleteEntry(DeleteEntryRequest request){
@@ -75,10 +75,10 @@ public class DiaryServiceImpo implements DiaryServices{
         throw new DiaryIsLockedException( );
     }
     public String updateEntry(EntryRequest request){
-        if( !findDiaryBy(request.getUserName( )).isLocked( ) ){
-            return entryRepo.update(request);
+        if( findDiaryBy(request.getUserName( )).isLocked( ) ){
+            throw new DiaryIsLockedException( );
         }
-        throw new DiaryIsLockedException( );
+        return entryRepo.update(request);
     }
 
 }
