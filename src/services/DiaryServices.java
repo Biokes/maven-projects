@@ -20,4 +20,5 @@ public interface DiaryServices{
 
     void deleteEntry(DeleteEntryRequest request);
 
+    void updateEntry(EntryRequest request);
 }

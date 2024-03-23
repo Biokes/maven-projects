@@ -83,6 +83,7 @@ public class DiaryServicesTest{
         request1.setTitle("name");
         request1.setbody("body of whatever");
         diaryService.craeateEntry(request1);
-        diaryService.updateEntry( );
+        EntryRequest entryRequest=new EntryRequest( );
+        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
     }
 }
