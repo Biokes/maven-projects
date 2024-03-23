@@ -1,4 +1,4 @@
-public class IncorrectPasswordException extends RuntimeException{
+public class IncorrectPasswordException extends DiaryNotFoundException{
     public IncorrectPasswordException(){
         super("Incorrect password");
     }

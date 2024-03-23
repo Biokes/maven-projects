@@ -1,6 +1,5 @@
-package exceptions;
 
-public class UserAlreadyExistException extends RuntimeException{
+public class UserAlreadyExistException extends DiaryNotFoundException{
     public UserAlreadyExistException(){
         super("User Already Exist");
     }

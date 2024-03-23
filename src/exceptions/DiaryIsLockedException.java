@@ -1,4 +1,4 @@
-public class DiaryIsLockedException extends exceptions.DiaryNotFoundException{
+public class DiaryIsLockedException extends DiaryNotFoundException{
     public DiaryIsLockedException(){
         super("Diary is Locked");
     }
