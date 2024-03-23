@@ -1,7 +1,5 @@
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-
 import static org.junit.Assert.assertEquals;
 
 public class DiaryControllerTest{
@@ -28,7 +26,11 @@ public class DiaryControllerTest{
         assertEquals("User Already Exist",controller.createDiary(request));
         assertEquals(1, controller.count( ));
         LoginRequest loginRequest = new LoginRequest("user name1", "pass");
-        assertEquals("Log in successful",controller.logIn(loginRequest));
+        assertEquals("log in successful",controller.logIn(loginRequest));
+        loginRequest = new LoginRequest("user name1", "pas1s");
+        assertEquals("Incorrect password",controller.logIn(loginRequest));
+        loginRequest = new LoginRequest("user ", "pas1s");
+        assertEquals("Incorrect password",controller.logIn(loginRequest));
     }
     @Test public void testCreateEntryAndDeleteEntryProperly(){}
     @Test public void testUpdateEntryProperly(){}
