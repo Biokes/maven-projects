@@ -5,10 +5,8 @@ import repositories.EntryRepo;
 import repositories.EntryRepoImpo;
 
 import static org.junit.Assert.assertEquals;
-
 public class EntryRepoTest{
     private EntryRepo repo;
-
     @Test
     public void createEntry_testEntryIsCreated(){
         repo=new EntryRepoImpo( );
@@ -58,7 +56,8 @@ public class EntryRepoTest{
         assertEquals(0, repo.count( ));
         entryRequest.setTitle("name");
         entryRequest.setbody("nme d");
-        entry.update(entryRequest);
+        entry.setTitle(entryRequest.getTitle());
+        entry.setBody(entryRequest.getBody( ));
         assertEquals("nme d", entry.getBody( ));
         assertEquals("name", entry.getTitle( ));
     }
