@@ -23,7 +23,6 @@ public class EntryRepoTest{
         repo.save(entry);
         assertEquals(1, repo.count( ));
     }
-
     @Test
     public void deleteEntry_testEntryIsDeleted(){
         repo=new EntryRepoImpo( );
@@ -41,7 +40,6 @@ public class EntryRepoTest{
         repo.deleteEntryById(entry.getId( ));
         assertEquals(0, repo.count( ));
     }
-
     @Test
     public void updateEntry_testEntryIsUpdated(){
         repo=new EntryRepoImpo( );
@@ -64,7 +62,6 @@ public class EntryRepoTest{
         assertEquals("nme d", entry.getBody( ));
         assertEquals("name", entry.getTitle( ));
     }
-
     @Test
     public void findAllEntries_testAllEntryIsFound(){
         repo=new EntryRepoImpo( );
