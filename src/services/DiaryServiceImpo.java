@@ -87,5 +87,9 @@ public class DiaryServiceImpo implements DiaryServices{
         throw new DiaryIsLockedException( );
     }
 
+    public void updateEntry(EntryRequest request){
+
+    }
+
 }
 
