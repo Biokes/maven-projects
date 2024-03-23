@@ -5,8 +5,13 @@ public class DiaryController{
         try{
             services.createDiary(request);
         }catch(DiaryNotFoundException error){
-            return  error.getMessage();
+            System.out.println(error.getMessage( ));
+            return "\n";
         }
         return "Diary created successfully.";
+    }
+
+    public int count(){
+        return services.count();
     }
 }

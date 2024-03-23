@@ -14,7 +14,7 @@ public class DiaryControllerTest{
     public void testCreateDiary_testDiaryIsCReatedProperly(){
         RegisterDiary request=new RegisterDiary("user name", "pass");
         controller.createDiary(request);
-//        Assertions.assertEquals(1, diaryService.count( ));
+       Assertions.assertEquals(1, controller.count( ));
         request=new RegisterDiary("", "pass");
         RegisterDiary finalRequest=request;
 //        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.createDiary(finalRequest));
