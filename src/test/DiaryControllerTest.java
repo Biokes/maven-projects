@@ -30,7 +30,9 @@ public class DiaryControllerTest{
         loginRequest = new LoginRequest("user name1", "pas1s");
         assertEquals("Incorrect password",controller.logIn(loginRequest));
         loginRequest = new LoginRequest("user ", "pas1s");
-        assertEquals("Incorrect password",controller.logIn(loginRequest));
+        assertEquals("Diary not found.",controller.logIn(loginRequest));
+        assertEquals("Log out successful.", controller.logOut("user name"));
+
     }
     @Test public void testCreateEntryAndDeleteEntryProperly(){}
     @Test public void testUpdateEntryProperly(){}

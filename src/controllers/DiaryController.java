@@ -20,4 +20,15 @@ public class DiaryController{
         }catch( DiaryNotFoundException error){return error.getMessage();}
         return "log in successful";
     }
+
+    public String logOut(String  userName){
+        try{
+            services.logOut(userName);
+        }catch(DiaryNotFoundException error){
+            System.out.println(error.getMessage( ));
+            return error.getMessage();
+        }
+        System.out.println("log out successful");
+        return "log out successful";
+    }
 }
