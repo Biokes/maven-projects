@@ -14,14 +14,22 @@ public class DiaryControllerTest{
     public void testCreateDiary_testDiaryIsCReatedProperly(){
         RegisterDiary request=new RegisterDiary("user name1", "pass");
         controller.createDiary(request);
-       Assertions.assertEquals(1, controller.count( ));
+       assertEquals(1, controller.count( ));
         request=new RegisterDiary("", "pass");
-        RegisterDiary finalRequest = request;
         request=new RegisterDiary("user name1", "");
         assertEquals("Invalid Username or Password was Provided",controller.createDiary(request));
+        request=new RegisterDiary("user name1", "password");
+        assertEquals("User Already Exist",controller.createDiary(request));
 
     }
-    @Test public void testLogInAndLogOutProperly(){}
+    @Test public void testLogInAndLogOutProperly(){
+        RegisterDiary request=new RegisterDiary("user name1", "pass");
+        controller.createDiary(request);
+        assertEquals("User Already Exist",controller.createDiary(request));
+        assertEquals(1, controller.count( ));
+        LoginRequest loginRequest = new LoginRequest("user name1", "pass");
+        assertEquals("Log in successful",controller.logIn(loginRequest));
+    }
     @Test public void testCreateEntryAndDeleteEntryProperly(){}
     @Test public void testUpdateEntryProperly(){}
 }
