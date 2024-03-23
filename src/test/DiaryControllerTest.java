@@ -37,8 +37,8 @@ public class DiaryControllerTest{
     public void menu(String choice){
         switch(choice){
             case "1" -> signUp( );
-            case "2" -> logIn( );
-            case "3" -> exit( );
+//            case "2" -> logIn( );
+//            case "3" -> exit( );
             default -> mainMenu( );
         }
     }
