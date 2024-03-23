@@ -1,6 +1,4 @@
 import dtos.EntryRequest;
-import exceptions.DiaryNotFoundException;
-import exceptions.InvalidDetailsException;
 import moodels.Diary;
 import moodels.Entry;
 import repositories.DiaryRepo;
