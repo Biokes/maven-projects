@@ -13,7 +13,7 @@ public class EntryRepoTest{
     public void createEntry_testEntryIsCreated(){
         repo=new EntryRepoImpo( );
         EntryRequest entryRequest=new EntryRequest( );
-        entryRequest.setAuthour("authour");
+        entryRequest.setUserName("authour");
         entryRequest.setTitle("title");
         entryRequest.setbody("body");
         Entry entry=new Entry( );
@@ -28,7 +28,7 @@ public class EntryRepoTest{
     public void deleteEntry_testEntryIsDeleted(){
         repo=new EntryRepoImpo( );
         EntryRequest entryRequest=new EntryRequest( );
-        entryRequest.setAuthour("authour");
+        entryRequest.setUserName("authour");
         entryRequest.setTitle("title");
         entryRequest.setbody("body");
         Entry entry=new Entry( );
@@ -46,7 +46,7 @@ public class EntryRepoTest{
     public void updateEntry_testEntryIsUpdated(){
         repo=new EntryRepoImpo( );
         EntryRequest entryRequest=new EntryRequest( );
-        entryRequest.setAuthour("authour");
+        entryRequest.setUserName("authour");
         entryRequest.setTitle("title");
         entryRequest.setbody("body");
         Entry entry=new Entry( );
