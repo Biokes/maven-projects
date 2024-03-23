@@ -57,7 +57,8 @@ public class DiaryServiceImpo implements DiaryServices{
         Entry entry=new Entry( );
         entry.setTitle(request.getTitle( ));
         entry.setBody(request.getBody( ));
-        entry.setId(entryRepo.count( )+1);
+        int id = entryRepo.count( )+1;
+        entry.setId(100 + id);
         entryRepo.save(entry);
     }
     public void deleteEntry(DeleteEntryRequest request){
