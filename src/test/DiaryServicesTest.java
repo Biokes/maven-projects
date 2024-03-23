@@ -89,12 +89,11 @@ public class DiaryServicesTest{
         entryRequest.setAuthour("user name1");
         assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setAuthour("user name1");
-        assertEquals(
-                String.format(
-                """
+        assertEquals(String.format("""
                         Entry id : %s
                         Title : %s
                         Body : %s
-                        Date Created : %s.""", 1, "Title", "body", "23/03/2024"), diaryService.updateEntry(entryRequest));
+                        Date Created : %s.""", 1, "Title", "body", "23/03/2024"),
+                diaryService.updateEntry(entryRequest));
     }
 }
