@@ -15,13 +15,15 @@ public class EntryRepoImpo implements EntryRepo{
     @Override
     public String update(EntryRequest entryRequest){
         Entry entryTemp = new Entry();
-        for( Entry entry : findAll( ) ){
-            if( entry.getTitle( ).equalsIgnoreCase(entryRequest.getTitle( ) )){
-                entryTemp.setBody(entryRequest.getBody( ));
+        for( Entry entry : findAll()){
+            if( entry.getTitle().equalsIgnoreCase(entryRequest.getTitle())){
+                entryTemp.setBody(entryRequest.getBody());
                 entryTemp.setId(entry.getId());
                 entryTemp.setDateCreated(entry.getDateCreated());
-                entryTemp.setTitle(entry.getTitle( ));
-                return entry.toString( );
+                entryTemp.setTitle(entry.getTitle());
+                entries.remove(entry);
+                entries.add(entryTemp);
+                return entryTemp.toString();
             }
         }
         return null;

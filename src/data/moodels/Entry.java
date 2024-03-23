@@ -1,7 +1,5 @@
 package moodels;
 
-import dtos.EntryRequest;
-
 import java.time.LocalDate;
 
 public class Entry{
