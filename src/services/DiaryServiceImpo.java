@@ -87,9 +87,8 @@ public class DiaryServiceImpo implements DiaryServices{
     }
 
     public String updateEntry(EntryRequest request){
-        if( findDiaryBy(request.getTitle( )).isLocked( ) ){
+        if( !findDiaryBy(request.getUserName( )).isLocked( ) ){
             return entryRepo.update(request);
-
         }
         throw new DiaryIsLockedException( );
     }

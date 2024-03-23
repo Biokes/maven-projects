@@ -6,6 +6,10 @@ public class EntryRequest{
     private String body;
     private int id;
 
+    public String getUserName(){
+        return userName;
+    }
+
     public String getTitle(){
         return title;
     }
@@ -22,11 +26,7 @@ public class EntryRequest{
         return id;
     }
 
-    private void setId(int id){
-        this.id=id;
-    }
-
-    public void setAuthour(String userName){
+    public void setUserName(String userName){
         this.userName=userName;
     }
 
