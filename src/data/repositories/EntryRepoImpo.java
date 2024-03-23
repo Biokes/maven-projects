@@ -20,7 +20,7 @@ public class EntryRepoImpo implements EntryRepo{
     @Override
     public String update(EntryRequest entryRequest){
         for( Entry entry : findAll( ) ){
-            if( entry.getTitle( ).equalsIgnoreCase()entryRequest.getTitle( ) ){
+            if( entry.getTitle( ).equalsIgnoreCase(entryRequest.getTitle( ) )){
                 entry.setBody(entryRequest.getBody( ));
                 entry.setTitle(entryRequest.getTitle( ));
                 return entry.toString( );
