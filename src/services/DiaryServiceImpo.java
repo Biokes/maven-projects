@@ -50,11 +50,9 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new DiaryNotFoundException( );
         return repo.findByUserName(username);
     }
-
     public int countEntries(){
         return entryRepo.count( );
     }
-
     public void craeateEntry(EntryRequest request){
         Entry entry=new Entry( );
         entry.setTitle(request.getTitle( ));
@@ -62,7 +60,6 @@ public class DiaryServiceImpo implements DiaryServices{
         entry.setId(entryRepo.count( )+1);
         entryRepo.save(entry);
     }
-
     public void deleteEntry(DeleteEntryRequest request){
         if( !findDiaryBy(request.getUserName( )).isLocked( ) ){
             for( Diary diary : repo.findAll( ) )
@@ -77,7 +74,6 @@ public class DiaryServiceImpo implements DiaryServices{
         }
         throw new DiaryIsLockedException( );
     }
-
     public String updateEntry(EntryRequest request){
         if( !findDiaryBy(request.getUserName( )).isLocked( ) ){
             return entryRepo.update(request);
