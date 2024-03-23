@@ -1,6 +1,6 @@
 
 public class InvalidDetailsException extends DiaryNotFoundException{
     public InvalidDetailsException(){
-        super("Invalid Details Provided");
+        super("Invalid Username or Password was Provided");
     }
 }
