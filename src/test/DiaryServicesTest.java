@@ -90,5 +90,11 @@ public class DiaryServicesTest{
         assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setAuthour("user name1");
         diaryService.updateEntry(entryRequest);
+        assertEquals(String.format(
+                """
+                        Entry id : %s
+                        Title : %s
+                        Body : %s
+                        Date Created : %s.""", getId( ), getTitle( ), getBody( ), this.date);,)
     }
 }
