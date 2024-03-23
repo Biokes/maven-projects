@@ -18,7 +18,15 @@ public class EntryRepoImpo implements EntryRepo{
     }
 
     @Override
-    public void update(EntryRequest entryRequest){
+    public String update(EntryRequest entryRequest){
+        for( Entry entry : findAll( ) ){
+            if( entry.getId( )==entryRequest.getId( ) ){
+                entry.setBody(entryRequest.getBody( ));
+                entry.setTitle(entryRequest.getTitle( ));
+                return entry.toString( );
+            }
+        }
+        return null;
     }
 
     public void deleteEntryById(int id){

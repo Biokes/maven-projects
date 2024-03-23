@@ -86,7 +86,9 @@ public class DiaryServicesTest{
         EntryRequest entryRequest=new EntryRequest( );
         entryRequest.setbody("body");
         entryRequest.setTitle("Title");
+        entryRequest.setAuthour("user name1");
         assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
-
+        entryRequest.setAuthour("user name1");
+        diaryService.updateEntry(entryRequest);
     }
 }

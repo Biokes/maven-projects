@@ -1,7 +1,7 @@
 package dtos;
 
 public class EntryRequest{
-    private String authour;
+    private String userName;
     private String title;
     private String body;
     private int id;
@@ -26,8 +26,8 @@ public class EntryRequest{
         this.id=id;
     }
 
-    public void setAuthour(String authour){
-        this.authour=authour;
+    public void setAuthour(String userName){
+        this.userName=userName;
     }
 
     public void setbody(String body){

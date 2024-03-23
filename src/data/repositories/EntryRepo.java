@@ -10,7 +10,7 @@ public interface EntryRepo{
 
     int count();
 
-    void update(EntryRequest entryRequest);
+    String update(EntryRequest entryRequest);
 
     void deleteEntryById(int id);
 
