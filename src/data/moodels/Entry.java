@@ -35,18 +35,13 @@ public class Entry{
     }
 
     public String toString(){
-        String output=String.format(
+        return String.format(
                 """
                         Entry id : %s
                         Title : %s
                         Body : %s
-                        Date Created : %s.""", getId( ), getTitle( ), getBody( ), this.date);
-        return output;
+                        Date Created : %s.""",
+                getId( ), getTitle( ), getBody( ), this.date);
     }
 
-
-    public void update(EntryRequest entryRequest){
-        this.title=entryRequest.getTitle( );
-        this.body=entryRequest.getBody( );
-    }
 }

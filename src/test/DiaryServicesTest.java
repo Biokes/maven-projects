@@ -21,18 +21,18 @@ public class DiaryServicesTest{
         Assertions.assertEquals(1, diaryService.count( ));
         request=new RegisterDiary("", "pass");
         RegisterDiary finalRequest=request;
-        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.createDiary(finalRequest));
+        assertThrows(InvalidDetailsException.class, ()->diaryService.createDiary(finalRequest));
         Assertions.assertEquals(1, diaryService.count( ));
         request=new RegisterDiary("user name", "");
         RegisterDiary finalRequest1=request;
-        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.createDiary(finalRequest1));
+        assertThrows(InvalidDetailsException.class, ()->diaryService.createDiary(finalRequest1));
         Assertions.assertEquals(1, diaryService.count( ));
     }
 
     @Test
     public void deleteDiary_testThatDiaryIsDeleted(){
         RegisterDiary request=new RegisterDiary("user name", "pass");
-        assertThrows(exceptions.DiaryNotFoundException.class, ()->diaryService.deleteDiary(request));
+        assertThrows(DiaryNotFoundException.class, ()->diaryService.deleteDiary(request));
         diaryService.createDiary(request);
         Assertions.assertEquals(1, diaryService.count( ));
     }
@@ -40,7 +40,7 @@ public class DiaryServicesTest{
     @Test
     public void testLoginAndLogOut(){
         RegisterDiary request=new RegisterDiary("user name", "pass");
-        assertThrows(exceptions.DiaryNotFoundException.class, ()->diaryService.deleteDiary(request));
+        assertThrows(DiaryNotFoundException.class, ()->diaryService.deleteDiary(request));
         Diary diary=diaryService.createDiary(request);
         assertFalse(diary.isLocked( ));
         Assertions.assertEquals(1, diaryService.count( ));
@@ -71,7 +71,7 @@ public class DiaryServicesTest{
         assertThrows(IncorrectPasswordException.class, ()->diaryService.logIn(loginRequest));
         loginRequest.setPassword("pass");
         diaryService.logIn(loginRequest);
-        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.deleteEntry(deleteEntryRequest));
+        assertThrows(InvalidDetailsException.class, ()->diaryService.deleteEntry(deleteEntryRequest));
     }
     @Test
     public void updateEntry_testEntryIsUpdatedProperly(){
@@ -86,8 +86,8 @@ public class DiaryServicesTest{
         entryRequest.setbody("body");
         entryRequest.setTitle("Title");
         entryRequest.setUserName("user name1");
-        assertThrows(exceptions.DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
-        entryRequest.setUserName("user name1");
+        assertThrows(DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
+        entryRequest.setUserName("user name");
         assertEquals(String.format("""
                         Entry id : %s
                         Title : %s
