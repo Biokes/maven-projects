@@ -95,6 +95,6 @@ public class DiaryServicesTest{
                         Entry id : %s
                         Title : %s
                         Body : %s
-                        Date Created : %s.""", getId( ), getTitle( ), getBody( ), this.date);,)
+                        Date Created : %s.""", getId( ), getTitle( ), getBody( ), this.date));
     }
 }
