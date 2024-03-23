@@ -73,7 +73,6 @@ public class DiaryServicesTest{
         diaryService.logIn(loginRequest);
         assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.deleteEntry(deleteEntryRequest));
     }
-
     @Test
     public void updateEntry_testEntryIsUpdatedProperly(){
         RegisterDiary request=new RegisterDiary("user name", "pass");
@@ -87,7 +86,7 @@ public class DiaryServicesTest{
         entryRequest.setbody("body");
         entryRequest.setTitle("Title");
         entryRequest.setAuthour("user name1");
-        assertThrows(exceptions.InvalidDetailsException.class, ()->diaryService.updateEntry(entryRequest));
+        assertThrows(exceptions.DiaryNotFoundException.class, ()->diaryService.updateEntry(entryRequest));
         entryRequest.setAuthour("user name1");
         assertEquals(String.format("""
                         Entry id : %s
