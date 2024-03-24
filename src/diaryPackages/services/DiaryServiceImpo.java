@@ -1,12 +1,6 @@
 package services;
 
-import dtos.EntryRequest;
-import moodels.Diary;
-import moodels.Entry;
-import repositories.DiaryRepo;
-import repositories.DiaryRepoImpo;
-import repositories.EntryRepo;
-import repositories.EntryRepoImpo;
+
 
 public class DiaryServiceImpo implements DiaryServices{
     private final DiaryRepo repo = new DiaryRepoImpo( );
