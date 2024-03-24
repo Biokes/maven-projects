@@ -8,6 +8,7 @@ import data.repositories.EntryRepo;
 import data.repositories.EntryRepoImpo;
 import dtos.RegisterDiary;
 import exceptions.InvalidDetailsException;
+import exceptions.UserAlreadyExistException;
 
 public class DiaryServiceImpo implements DiaryServices{
     private final DiaryRepo repo = new DiaryRepoImpo( );
