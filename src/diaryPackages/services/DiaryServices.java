@@ -3,6 +3,7 @@ package services;
 import data.moodels.Diary;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
+import dtos.dtos.EntryRequest;
 
 public interface DiaryServices{
     Diary createDiary(RegisterDiary request);
