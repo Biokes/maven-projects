@@ -55,4 +55,8 @@ public class DiaryController{
         }
         return "Entry deleted.";
     }
+
+    public int countEntries(){
+        return services.countEntries();
+    }
 }

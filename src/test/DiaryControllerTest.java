@@ -48,10 +48,10 @@ public class DiaryControllerTest{
         assertEquals("Entry created successfully", controller.createEntry(entry));
         DeleteEntryRequest request1= new DeleteEntryRequest();
         request1.setId(1);
-        request1.setUserName("user name");
+        request1.setUserName("user name1");
         request1.setPassword("pass");
         controller.deleteEntry(request1);
-        assertEquals(0, controller.count());
+        assertEquals(0, controller.countEntries());
 
     }
     @Test public void testUpdateEntryProperly(){}
