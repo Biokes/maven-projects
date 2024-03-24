@@ -1,8 +1,7 @@
 package data.repositories;
 
-import moodels.Diary;
 
-import java.util.List;
+import data.moodels.Diary;
 
 public interface DiaryRepo{
     Diary save(Diary diary);
