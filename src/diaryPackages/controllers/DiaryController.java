@@ -1,6 +1,8 @@
 package controllers;
 
 
+import dtos.RegisterDiary;
+import exceptions.DiaryNotFoundException;
 import services.DiaryServiceImpo;
 import services.DiaryServices;
 
@@ -10,7 +12,7 @@ public class DiaryController{
     public String createDiary(RegisterDiary request){
         try{
             services.createDiary(request);
-        }catch(DiaryNotFoundException error){
+        }catch( DiaryNotFoundException error){
             return error.getMessage( );
         }
         return "Diary created successfully.";

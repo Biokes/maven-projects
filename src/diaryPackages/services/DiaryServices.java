@@ -1,7 +1,7 @@
 package services;
 
-import dtos.EntryRequest;
-import moodels.Diary;
+import data.moodels.Diary;
+import dtos.RegisterDiary;
 
 public interface DiaryServices{
     Diary createDiary(RegisterDiary request);
