@@ -1,9 +1,7 @@
 package data.repositories;
 
-import dtos.EntryRequest;
-import moodels.Entry;
 
-import java.util.List;
+import data.moodels.Entry;
 
 public interface EntryRepo{
     String save(Entry entry);
