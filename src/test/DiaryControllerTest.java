@@ -34,7 +34,7 @@ public class DiaryControllerTest{
         assertEquals("log out successful", controller.logOut("user name1"));
         EntryRequest entryRequest = new EntryRequest("name","body");
         entryRequest.setUserName("user name1");
-        assertEquals("Diary is Locked.", controller.createEntry(entryRequest));
+        assertEquals("Diary is Locked", controller.createEntry(entryRequest));
     }
     @Test public void testCreateEntryAndDeleteEntryProperly(){
         RegisterDiary request=new RegisterDiary("user name1", "pass");
@@ -46,6 +46,11 @@ public class DiaryControllerTest{
         EntryRequest entry = new EntryRequest("Title","Body");
         entry.setUserName("user name1");
         assertEquals("Entry created successfully", controller.createEntry(entry));
+        DeleteEntryRequest request1= new DeleteEntryRequest();
+        request1.setId(1);
+        request1.setUserName("user name");
+        request1.setPassword("pass");
+        controller.deleteEntry();
     }
     @Test public void testUpdateEntryProperly(){}
 }
