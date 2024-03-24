@@ -33,6 +33,7 @@ public class DiaryControllerTest{
         assertEquals("Diary not found.",controller.logIn(loginRequest));
         assertEquals("log out successful", controller.logOut("user name1"));
         EntryRequest entryRequest = new EntryRequest("name","body");
+        entryRequest.setUserName("user name1");
         assertEquals("Diary is Locked.", controller.createEntry(entryRequest));
     }
     @Test public void testCreateEntryAndDeleteEntryProperly(){
@@ -43,6 +44,7 @@ public class DiaryControllerTest{
         LoginRequest loginRequest = new LoginRequest("user name1", "pass");
         assertEquals("log in successful",controller.logIn(loginRequest));
         EntryRequest entry = new EntryRequest("Title","Body");
+        entry.setUserName("user name1");
         assertEquals("Entry created successfully", controller.createEntry(entry));
     }
     @Test public void testUpdateEntryProperly(){}
