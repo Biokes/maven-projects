@@ -3,6 +3,7 @@ package services;
 
 import data.repositories.DiaryRepo;
 import data.repositories.DiaryRepoImpo;
+import data.repositories.EntryRepoImpo;
 
 public class DiaryServiceImpo implements DiaryServices{
     private final DiaryRepo repo = new DiaryRepoImpo( );
