@@ -2,6 +2,7 @@ package services;
 
 
 import data.moodels.Diary;
+import dtos.DeleteEntryRequest;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
