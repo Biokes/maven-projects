@@ -1,9 +1,7 @@
 package data.repositories;
-import dtos.EntryRequest;
-import moodels.Entry;
 
 import java.util.ArrayList;
-import java.util.List;
+
 public class EntryRepoImpo implements EntryRepo{
     private final List<Entry> entries=new ArrayList<>( );
     public String save(Entry entry){
