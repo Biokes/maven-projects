@@ -46,13 +46,24 @@ public class DiaryControllerTest{
         EntryRequest entry = new EntryRequest("Title","Body");
         entry.setUserName("user name1");
         assertEquals("Entry created successfully", controller.createEntry(entry));
+        assertEquals("Entry created successfully", controller.createEntry(entry));
         DeleteEntryRequest request1= new DeleteEntryRequest();
         request1.setId(1);
         request1.setUserName("user name1");
         request1.setPassword("pass");
         controller.deleteEntry(request1);
-        assertEquals(0, controller.countEntries());
+        assertEquals(1, controller.countEntries());
 
     }
-    @Test public void testUpdateEntryProperly(){}
+    @Test public void testUpdateEntryProperly(){
+        RegisterDiary request=new RegisterDiary("user name1", "pass");
+        controller.createDiary(request);
+        assertEquals("User Already Exist",controller.createDiary(request));
+        assertEquals("log out successful", controller.logOut("user name1"));
+        LoginRequest loginRequest = new LoginRequest("user name1", "pass");
+        assertEquals("log in successful",controller.logIn(loginRequest));
+        EntryRequest entry = new EntryRequest("Title","Body");
+        entry.setUserName("user name1");
+        assertEquals("Entry created successfully", controller.createEntry(entry));
+    }
 }
