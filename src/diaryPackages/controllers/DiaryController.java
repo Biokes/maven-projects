@@ -6,9 +6,11 @@ import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 import exceptions.DiaryNotFoundException;
+import org.springframework.web.bind.annotation.RestController;
 import services.DiaryServiceImpo;
 import services.DiaryServices;
 
+@RestController
 public class DiaryController{
     private final DiaryServices services = new DiaryServiceImpo();
     public String createDiary(RegisterDiary request){

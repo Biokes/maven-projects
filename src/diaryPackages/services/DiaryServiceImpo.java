@@ -12,9 +12,14 @@ import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 import exceptions.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DiaryServiceImpo implements DiaryServices{
+    @Autowired
     private final DiaryRepo repo = new DiaryRepoImpo( );
+    @Autowired
     private final EntryRepo entryRepo = new EntryRepoImpo();
     public Diary createDiary(RegisterDiary request){
         validate(request);
@@ -40,7 +45,7 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new DiaryNotFoundException( );
         if( !repo.findByUserName(loginRequest.getUserName( )).getPassword( ).equalsIgnoreCase(loginRequest.getPassword( )) )
             throw new IncorrectPasswordException( );
-        repo.findByUserName(loginRequest.getUserName( )).setLock(false);
+        repo.findByUserName(loginRequest.getUserName( )).setLocked(false);
     }
     public void deleteDiary(RegisterDiary request){
         validate(request);
@@ -53,7 +58,7 @@ public class DiaryServiceImpo implements DiaryServices{
     public void logOut(String userName){
         if( repo.findByUserName(userName)==null )
             throw new InvalidDetailsException( );
-        repo.findByUserName(userName).setLock(true);
+        repo.findByUserName(userName).setLocked(true);
     }
     public Diary findDiaryBy(String username){
         if( repo.findByUserName(username) == null )
