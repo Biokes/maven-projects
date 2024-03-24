@@ -3,6 +3,7 @@ package controllers;
 
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
+import dtos.dtos.EntryRequest;
 import exceptions.DiaryNotFoundException;
 import services.DiaryServiceImpo;
 import services.DiaryServices;
