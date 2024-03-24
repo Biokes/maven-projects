@@ -11,7 +11,6 @@ import services.DiaryServices;
 
 public class DiaryController{
     private final DiaryServices services = new DiaryServiceImpo();
-
     public String createDiary(RegisterDiary request){
         try{
             services.createDiary(request);
@@ -20,18 +19,15 @@ public class DiaryController{
         }
         return "Diary created successfully.";
     }
-
     public int count(){
         return services.count();
     }
-
     public String logIn(LoginRequest loginRequest){
         try{
             services.logIn(loginRequest);
         }catch( DiaryNotFoundException error){return error.getMessage();}
         return "log in successful";
     }
-
     public String logOut(String  userName){
         try{
             services.logOut(userName);
@@ -42,7 +38,6 @@ public class DiaryController{
         System.out.println("log out successful");
         return "log out successful";
     }
-
     public String createEntry(EntryRequest entry){
         try{
         String output = services.createEntry(entry);
@@ -53,7 +48,6 @@ public class DiaryController{
         }
         return "Entry created successfully";
     }
-
     public String deleteEntry(DeleteEntryRequest request1){
         try{
              services.deleteEntry(request1);
@@ -64,11 +58,9 @@ public class DiaryController{
         }
         return "Entry deleted.";
     }
-
     public int countEntries(){
         return services.countEntries();
     }
-
     public String updateEntry(EntryRequest entryRequest){
         try{
             System.out.println(services.updateEntry(entryRequest));
