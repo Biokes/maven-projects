@@ -32,6 +32,8 @@ public class DiaryControllerTest{
         loginRequest = new LoginRequest("user ", "pas1s");
         assertEquals("Diary not found.",controller.logIn(loginRequest));
         assertEquals("log out successful", controller.logOut("user name1"));
+        EntryRequest entryRequest = new EntryRequest("name","body");
+        assertEquals("Diary is Locked.", controller.createEntry(entryRequest));
     }
     @Test public void testCreateEntryAndDeleteEntryProperly(){
         RegisterDiary request=new RegisterDiary("user name1", "pass");

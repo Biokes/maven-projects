@@ -3,10 +3,14 @@ package moodels;
 import java.time.LocalDate;
 
 public class Entry{
+    private String author;
     private String body;
     private int id;
     private String title;
     private LocalDate date=LocalDate.now( );
+    public String getAuthor(){
+        return this.author;
+    }
 
     public String getBody(){
         return body;
@@ -44,8 +48,9 @@ public class Entry{
                         Entry id : %s
                         Title : %s
                         Body : %s
+                        Author : %s
                         Date Created : %s.""",
-                getId( ), getTitle( ), getBody( ), this.date);
+                getId( ), getTitle( ), getBody( ),getAuthor(), this.date);
     }
 
 }

@@ -49,20 +49,23 @@ public class DiaryServiceImpo implements DiaryServices{
         repo.findByUserName(userName).isLocked(true);
     }
     public Diary findDiaryBy(String username){
-        if( repo.findByUserName(username) != null )
-            return repo.findByUserName(username);
-        throw new DiaryNotFoundException( );
+        if( repo.findByUserName(username) == null )
+            throw new DiaryNotFoundException( );
+        return repo.findByUserName(username);
     }
     public int countEntries(){
         return entryRepo.count( );
     }
-    public String craeateEntry(EntryRequest request){
-        Entry entry=new Entry( );
-        entry.setTitle(request.getTitle( ));
-        entry.setBody(request.getBody( ));
-        int id = entryRepo.count();
-        entry.setId(++id);
-        return entryRepo.save(entry);
+    public String createEntry(EntryRequest request){
+        if(!findDiaryBy(request.getUserName()).isLocked()){
+            Entry entry=new Entry( );
+            entry.setTitle(request.getTitle( ));
+            entry.setBody(request.getBody( ));
+            int id=entryRepo.count( );
+            entry.setId(++id);
+            return entryRepo.save(entry);
+        }
+        throw new DiaryIsLockedException();
 
     }
     public void deleteEntry(DeleteEntryRequest request){

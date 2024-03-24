@@ -16,7 +16,7 @@ public interface DiaryServices{
 
     int countEntries();
 
-    String craeateEntry(EntryRequest request);
+    String createEntry(EntryRequest request);
 
     void deleteEntry(DeleteEntryRequest request);
 

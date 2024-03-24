@@ -36,7 +36,8 @@ public class DiaryController{
 
     public String createEntry(EntryRequest entry){
         try{
-        String output = services.craeateEntry(entry);
+        String output = services.createEntry(entry);
+            System.out.println(output);
         }catch(DiaryNotFoundException error ){
             System.out.println(error.getMessage( ));
             return error.getMessage();

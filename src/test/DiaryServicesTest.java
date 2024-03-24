@@ -58,7 +58,7 @@ public class DiaryServicesTest{
         EntryRequest request1=new EntryRequest( );
         request1.setTitle("name");
         request1.setbody("body of whatever");
-        diaryService.craeateEntry(request1);
+        diaryService.createEntry(request1);
         assertEquals(1, diaryService.countEntries( ));
         DeleteEntryRequest deleteEntryRequest=new DeleteEntryRequest( );
         deleteEntryRequest.setPassword("pass");
@@ -84,7 +84,7 @@ public class DiaryServicesTest{
         EntryRequest request1=new EntryRequest( );
         request1.setTitle("name");
         request1.setbody("body of whatever");
-        diaryService.craeateEntry(request1);
+        diaryService.createEntry(request1);
         assertEquals(1, diaryService.countEntries());
         EntryRequest entryRequest=new EntryRequest( );
         entryRequest.setbody("body");
