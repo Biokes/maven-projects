@@ -53,4 +53,7 @@ public class Entry{
                 getId( ), getTitle( ), getBody( ),getAuthor(), this.date);
     }
 
+    public void setAuthor(String author){
+        this.author = author;
+    }
 }

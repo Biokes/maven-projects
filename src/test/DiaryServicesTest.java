@@ -58,6 +58,7 @@ public class DiaryServicesTest{
         EntryRequest request1=new EntryRequest( );
         request1.setTitle("name");
         request1.setbody("body of whatever");
+        request1.setUserName("user Name");
         diaryService.createEntry(request1);
         assertEquals(1, diaryService.countEntries( ));
         DeleteEntryRequest deleteEntryRequest=new DeleteEntryRequest( );
@@ -84,6 +85,7 @@ public class DiaryServicesTest{
         EntryRequest request1=new EntryRequest( );
         request1.setTitle("name");
         request1.setbody("body of whatever");
+        request1.setUserName("user name");
         diaryService.createEntry(request1);
         assertEquals(1, diaryService.countEntries());
         EntryRequest entryRequest=new EntryRequest( );
@@ -96,7 +98,8 @@ public class DiaryServicesTest{
                         Entry id : %s
                         Title : %s
                         Body : %s
-                        Date Created : %s.""", 1, "name", "body", "2024-03-23"),
+                        Author : %s
+                        Date Created : %s.""", 1, "name","body", "user name","2024-03-24"),
                 diaryService.updateEntry(entryRequest));
     }
 }

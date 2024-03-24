@@ -20,6 +20,7 @@ public class EntryRepoImpo implements EntryRepo{
             if( entry.getTitle().equalsIgnoreCase(entryRequest.getTitle())){
                 entryTemp.setBody(entryRequest.getBody());
                 entryTemp.setId(entry.getId());
+                entryTemp.setAuthor(entryRequest.getUserName( ));
                 entryTemp.setDateCreated(entry.getDateCreated());
                 entryTemp.setTitle(entry.getTitle());
                 entries.remove(entry);
