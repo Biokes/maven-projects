@@ -1,6 +1,7 @@
 package data.repositories;
 
-import moodels.Diary;
+
+import data.moodels.Diary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class DiaryRepoImpo implements DiaryRepo{
 
     public Diary findByUserName(String userName){
         for( Diary diary : diaries ){
-            if( diary.getUserName( ).equalsIgnoreCase(userName) )
+            if( diary.getUsername( ).equalsIgnoreCase(userName) )
                 return diary;
         }
         return null;
@@ -31,7 +32,7 @@ public class DiaryRepoImpo implements DiaryRepo{
 
     public void deleteByUserName(String userName){
         for( Diary diary : diaries ){
-            if( diary.getUserName( ).equalsIgnoreCase(userName) ){
+            if( diary.getUsername().equalsIgnoreCase(userName) ){
                 diaries.remove(diary);
                 return;
             }
