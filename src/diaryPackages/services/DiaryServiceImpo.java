@@ -40,7 +40,7 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new DiaryNotFoundException( );
         if( !repo.findByUserName(loginRequest.getUserName( )).getPassword( ).equalsIgnoreCase(loginRequest.getPassword( )) )
             throw new IncorrectPasswordException( );
-        repo.findByUserName(loginRequest.getUserName( )).isLocked(false);
+        repo.findByUserName(loginRequest.getUserName( )).setLocked(false);
     }
     public void deleteDiary(RegisterDiary request){
         validate(request);
@@ -53,7 +53,7 @@ public class DiaryServiceImpo implements DiaryServices{
     public void logOut(String userName){
         if( repo.findByUserName(userName)==null )
             throw new InvalidDetailsException( );
-        repo.findByUserName(userName).isLocked(true);
+        repo.findByUserName(userName).setLock(true);
     }
     public Diary findDiaryBy(String username){
         if( repo.findByUserName(username) == null )
@@ -64,7 +64,7 @@ public class DiaryServiceImpo implements DiaryServices{
         return entryRepo.count( );
     }
     public String createEntry(EntryRequest request){
-        if(!findDiaryBy(request.getUserName()).isLocked()){
+        if(!findDiaryBy(request.getUserName()).setLock()){
             Entry entry=new Entry( );
             entry.setTitle(request.getTitle( ));
             entry.setBody(request.getBody( ));
@@ -91,7 +91,7 @@ public class DiaryServiceImpo implements DiaryServices{
         throw new DiaryIsLockedException( );
     }
     public String updateEntry(EntryRequest request){
-        if( findDiaryBy(request.getUserName( )).isLocked( ) ){
+        if( findDiaryBy(request.getUserName( )).setLock( ) ){
             throw new DiaryIsLockedException( );
         }
         return entryRepo.update(request);

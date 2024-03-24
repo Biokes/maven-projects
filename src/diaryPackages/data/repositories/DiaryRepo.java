@@ -3,6 +3,8 @@ package data.repositories;
 
 import data.moodels.Diary;
 
+import java.util.List;
+
 public interface DiaryRepo{
     Diary save(Diary diary);
 
