@@ -12,7 +12,7 @@ public class Diary{
         return isLocked;
     }
 
-    public void setLocked(boolean locked){
+    public void setLock(boolean locked){
         isLocked=locked;
     }
 
