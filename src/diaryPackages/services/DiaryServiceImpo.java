@@ -9,6 +9,7 @@ import data.repositories.EntryRepoImpo;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import exceptions.DiaryNotFoundException;
+import exceptions.IncorrectPasswordException;
 import exceptions.InvalidDetailsException;
 import exceptions.UserAlreadyExistException;
 
