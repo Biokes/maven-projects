@@ -46,5 +46,6 @@ public class DiaryController{
     }
 
     public String deleteEntry(DeleteEntryRequest request1){
+        return null;
     }
 }
