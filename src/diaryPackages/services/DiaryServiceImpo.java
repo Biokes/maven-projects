@@ -6,6 +6,7 @@ import data.repositories.DiaryRepo;
 import data.repositories.DiaryRepoImpo;
 import data.repositories.EntryRepo;
 import data.repositories.EntryRepoImpo;
+import dtos.RegisterDiary;
 
 public class DiaryServiceImpo implements DiaryServices{
     private final DiaryRepo repo = new DiaryRepoImpo( );
