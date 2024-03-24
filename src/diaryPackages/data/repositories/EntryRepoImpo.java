@@ -1,6 +1,9 @@
 package data.repositories;
 
+import data.moodels.Entry;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class EntryRepoImpo implements EntryRepo{
     private final List<Entry> entries=new ArrayList<>( );
