@@ -78,7 +78,7 @@ public class DiaryServiceImpo implements DiaryServices{
     }
     public void deleteEntry(DeleteEntryRequest request){
         if(!findDiaryBy(request.getUserName()).isLocked()){
-            boolean usernameMatch = findDiaryBy(request.getUserName()).getUserName().equalsIgnoreCase(request.getUserName());
+            boolean usernameMatch = findDiaryBy(request.getUserName()).getUsername().equalsIgnoreCase(request.getUserName());
             if(usernameMatch){
                     for( Entry entry : entryRepo.findAll()){
                         if( entry.getId() == request.getId())
