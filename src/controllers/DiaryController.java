@@ -59,4 +59,8 @@ public class DiaryController{
     public int countEntries(){
         return services.countEntries();
     }
+
+    public String updateEntry(EntryRequest entryRequest){
+        return null;
+    }
 }

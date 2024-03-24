@@ -65,5 +65,8 @@ public class DiaryControllerTest{
         EntryRequest entry = new EntryRequest("Title","Body");
         entry.setUserName("user name1");
         assertEquals("Entry created successfully", controller.createEntry(entry));
+        EntryRequest entryRequest = new EntryRequest("Title","");
+        entryRequest.setUserName("user name");
+        controller.updateEntry(entryRequest);
     }
 }
