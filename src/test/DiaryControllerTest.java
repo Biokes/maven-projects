@@ -50,7 +50,7 @@ public class DiaryControllerTest{
         request1.setId(1);
         request1.setUserName("user name");
         request1.setPassword("pass");
-        controller.deleteEntry();
+        controller.deleteEntry(request1);
     }
     @Test public void testUpdateEntryProperly(){}
 }

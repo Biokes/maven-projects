@@ -44,4 +44,7 @@ public class DiaryController{
         }
         return "Entry created successfully";
     }
+
+    public String deleteEntry(DeleteEntryRequest request1){
+    }
 }
