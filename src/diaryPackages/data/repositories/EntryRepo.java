@@ -2,6 +2,7 @@ package data.repositories;
 
 
 import data.moodels.Entry;
+import dtos.dtos.EntryRequest;
 
 public interface EntryRepo{
     String save(Entry entry);
