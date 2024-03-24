@@ -7,6 +7,7 @@ import data.repositories.DiaryRepo;
 import data.repositories.DiaryRepoImpo;
 import data.repositories.EntryRepo;
 import data.repositories.EntryRepoImpo;
+import dtos.DeleteEntryRequest;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
