@@ -1,6 +1,7 @@
 package data.repositories;
 
 import data.moodels.Entry;
+import dtos.dtos.EntryRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,6 @@ public class EntryRepoImpo implements EntryRepo{
     public int count(){
         return entries.size( );
     }
-    @Override
     public String update(EntryRequest entryRequest){
         Entry entryTemp = new Entry();
         for( Entry entry : findAll()){
