@@ -1,6 +1,7 @@
 package services;
 
 
+import data.moodels.Diary;
 import data.repositories.DiaryRepo;
 import data.repositories.DiaryRepoImpo;
 import data.repositories.EntryRepo;
