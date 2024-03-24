@@ -1,7 +1,7 @@
 import dtos.EntryRequest;
 
 public class DiaryController{
-    private DiaryServices services = new DiaryServiceImpo();
+    private final DiaryServices services = new DiaryServiceImpo();
 
     public String createDiary(RegisterDiary request){
         try{
@@ -61,6 +61,12 @@ public class DiaryController{
     }
 
     public String updateEntry(EntryRequest entryRequest){
-        return null;
+        try{
+            System.out.println(services.updateEntry(entryRequest));
+        }catch(DiaryNotFoundException error){
+            System.out.println(error.getMessage( ));
+            return error.getMessage();
+        }
+        return "Entry updated successfully";
     }
 }

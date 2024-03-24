@@ -51,7 +51,7 @@ public class DiaryControllerTest{
         request1.setId(1);
         request1.setUserName("user name1");
         request1.setPassword("pass");
-        controller.deleteEntry(request1);
+        assertEquals("Entry deleted." ,controller.deleteEntry(request1));
         assertEquals(1, controller.countEntries());
 
     }
@@ -66,7 +66,10 @@ public class DiaryControllerTest{
         entry.setUserName("user name1");
         assertEquals("Entry created successfully", controller.createEntry(entry));
         EntryRequest entryRequest = new EntryRequest("Title","");
-        entryRequest.setUserName("user name");
-        controller.updateEntry(entryRequest);
+        entryRequest.setUserName("user name1");
+        assertEquals("Entry updated successfully",controller.updateEntry(entryRequest));
+        assertEquals("log out successful", controller.logOut("user name1"));
+        assertEquals("Diary is Locked",controller.updateEntry(entryRequest));
+
     }
 }
