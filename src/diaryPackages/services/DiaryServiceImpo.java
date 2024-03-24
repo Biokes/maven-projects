@@ -6,6 +6,7 @@ import data.repositories.DiaryRepo;
 import data.repositories.DiaryRepoImpo;
 import data.repositories.EntryRepo;
 import data.repositories.EntryRepoImpo;
+import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import exceptions.InvalidDetailsException;
 import exceptions.UserAlreadyExistException;
