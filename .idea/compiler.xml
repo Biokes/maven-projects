@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BiokesDaity" />
+        <module name="d-Diary" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BiokesDaity" target="15" />
+      <module name="D_Diary" target="21" />
       <module name="susanDiary" target="1.5" />
     </bytecodeTargetLevel>
   </component>
