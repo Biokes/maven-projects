@@ -51,6 +51,8 @@ public class DiaryControllerTest{
         request1.setUserName("user name");
         request1.setPassword("pass");
         controller.deleteEntry(request1);
+        assertEquals(0, controller.count());
+
     }
     @Test public void testUpdateEntryProperly(){}
 }

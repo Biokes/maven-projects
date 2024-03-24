@@ -46,6 +46,12 @@ public class DiaryController{
     }
 
     public String deleteEntry(DeleteEntryRequest request1){
-        return null;
+        try{
+             services.deleteEntry(request1);
+        }catch(DiaryNotFoundException error){
+            System.out.println(error.getMessage( ));
+            return error.getMessage();
+        }
+        return "Entry deleted.";
     }
 }
