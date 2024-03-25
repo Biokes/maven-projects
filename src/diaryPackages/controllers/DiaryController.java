@@ -50,6 +50,19 @@ public class DiaryController{
         services.createEntry(entry);
         return Collections.singletonList("Created Successfully.");
     }
+    @GetMapping("getEntry/{entryId}")
+    public String deleteEntry(@PathVariable("entryId") int id, @RequestParam(name = "userName",defaultValue = "")String userName){
+        try{
+            DeleteEntryRequest request = new DeleteEntryRequest();
+            request.setId((int)id);
+            request.setUserName(userName);
+            services.deleteEntry(request);
+            return  "deleted Successfully.";
+        }
+        catch(DiaryNotFoundException error){
+            return error.getMessage( );
+        }
+    }
     @DeleteMapping("/deleteEntry/{entryID}")
     public String deleteEntry(@PathVariable("entryID") int id, @RequestParam(name = "userName",defaultValue="") DeleteEntryRequest request1){
         try{

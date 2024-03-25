@@ -1,6 +1,5 @@
 package services;
 import data.moodels.Diary;
-import data.moodels.Entry;
 import data.repositories.DiaryRepo;
 import data.repositories.EntryRepo;
 import dtos.DeleteEntryRequest;
@@ -10,6 +9,8 @@ import dtos.dtos.EntryRequest;
 import exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 @Service
 public class DiaryServiceImpo implements DiaryServices{
     @Autowired
@@ -57,9 +58,10 @@ public class DiaryServiceImpo implements DiaryServices{
         repo.findByUserName(userName).setLocked(true);
     }
     public Diary findDiaryBy(String username){
-        if( repo.findByUserName(username) == null )
-            throw new DiaryNotFoundException( );
-        return repo.findByUserName(username);
+        Optional<Diary> diary = repo.findById(username.toLowerCase());
+        if(diary.isEmpty())
+            throw new DiaryNotFoundException();
+        return diary.get();
     }
     public int countEntries(){
         return (int)entryRepo.count( );
