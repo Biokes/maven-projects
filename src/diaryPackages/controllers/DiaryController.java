@@ -69,9 +69,6 @@ public class DiaryController{
         }
         return "Entry deleted.";
     }
-    public int countEntries(){
-        return services.countEntries();
-    }
     @PatchMapping("/updateEntry")
     public String updateEntry(EntryRequest entryRequest){
         try{

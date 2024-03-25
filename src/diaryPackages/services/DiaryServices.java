@@ -8,7 +8,7 @@ import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 
 public interface DiaryServices{
-    Diary createDiary(RegisterDiary request);
+    void createDiary(RegisterDiary request);
 
     int count();
 

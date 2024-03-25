@@ -2,19 +2,14 @@ package data.repositories;
 
 
 import data.moodels.Diary;
+import data.moodels.Entry;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface DiaryRepo{
-    Diary save(Diary diary);
-
-    List<Diary> findAll();
+public interface DiaryRepo extends MongoRepository<Entry, String>{
 
     Diary findByUserName(String userName);
 
-    int count();
-
-    void deleteByUserName(String userName);
-
-    void deleteDiary(Diary diary);
+    void deleteDiary(Diary diaryBy);
 }

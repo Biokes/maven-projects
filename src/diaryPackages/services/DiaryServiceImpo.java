@@ -4,9 +4,7 @@ package services;
 import data.moodels.Diary;
 import data.moodels.Entry;
 import data.repositories.DiaryRepo;
-import data.repositories.DiaryRepoImpo;
 import data.repositories.EntryRepo;
-import data.repositories.EntryRepoImpo;
 import dtos.DeleteEntryRequest;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
@@ -18,17 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class DiaryServiceImpo implements DiaryServices{
     @Autowired
-    private final DiaryRepo repo = new DiaryRepoImpo( );
+    private  DiaryRepo repo ;
     @Autowired
-    private final EntryRepo entryRepo = new EntryRepoImpo();
-    public Diary createDiary(RegisterDiary request){
+    private  EntryRepo entryRepo;
+    public void createDiary(RegisterDiary request){
         validate(request);
         Diary diary=new Diary( );
         diary.setUsername(request.getUserName( ));
         diary.setPassword(request.getPassword( ));
-        diary=repo.save(diary);
-        return diary;
-    }
+        }
     private void validate(RegisterDiary request){
         if( request.getUserName( ).isEmpty( )||request.getPassword( ).isEmpty( ) )
             throw new InvalidDetailsException( );
@@ -38,7 +34,7 @@ public class DiaryServiceImpo implements DiaryServices{
        }
     }
     public int count(){
-        return repo.count( );
+        return (int)repo.count( );
     }
     public void logIn(LoginRequest loginRequest){
         if( repo.findByUserName(loginRequest.getUserName( ))==null )
@@ -66,7 +62,7 @@ public class DiaryServiceImpo implements DiaryServices{
         return repo.findByUserName(username);
     }
     public int countEntries(){
-        return entryRepo.count( );
+        return (int)entryRepo.count( );
     }
     public String createEntry(EntryRequest request){
         if(!findDiaryBy(request.getUserName()).isLocked()){
@@ -74,7 +70,7 @@ public class DiaryServiceImpo implements DiaryServices{
             entry.setTitle(request.getTitle( ));
             entry.setBody(request.getBody( ));
             entry.setAuthor(request.getUserName( ));
-            int id=entryRepo.count( );
+            int id=(int)entryRepo.count( );
             entry.setId(++id);
             return entryRepo.save(entry);
         }

@@ -1,19 +1,14 @@
 package data.repositories;
 
 
-import data.moodels.Entry;
+import data.moodels.Diary;
 import dtos.dtos.EntryRequest;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
 
-public interface EntryRepo{
-    String save(Entry entry);
-
-    int count();
-
-    String update(EntryRequest entryRequest);
+public interface EntryRepo extends MongoRepository<Diary, String>{
 
     void deleteEntryById(int id);
 
-    List<Entry> findAll();
+    String update(EntryRequest request);
 }
