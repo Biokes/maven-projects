@@ -10,5 +10,5 @@ public interface EntryRepo extends MongoRepository<Entry, String>{
 
     void deleteEntryById(int id);
 
-    String update(EntryRequest request);
+    void update(EntryRequest request);
 }
