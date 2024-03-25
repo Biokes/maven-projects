@@ -1,7 +1,6 @@
 package data.repositories;
 
 
-import data.moodels.Diary;
 import data.moodels.Entry;
 import dtos.dtos.EntryRequest;
 import org.springframework.data.mongodb.repository.MongoRepository;

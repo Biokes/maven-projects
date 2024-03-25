@@ -7,18 +7,19 @@ import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 import exceptions.DiaryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import services.DiaryServiceImpo;
 import services.DiaryServices;
+
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class DiaryController{
     @Autowired
     private final DiaryServices services = new DiaryServiceImpo();
     @PostMapping("/sign_up")
-    public String createDiary(RegisterDiary request){
+    public String createDiary(@RequestBody RegisterDiary request){
         try{
             services.createDiary(request);
         }catch( DiaryNotFoundException error){
@@ -26,18 +27,15 @@ public class DiaryController{
         }
         return "Diary created successfully.";
     }
-    public int count(){
-        return services.count();
-    }
     @PatchMapping("/login")
-    public String logIn(LoginRequest loginRequest){
+    public String logIn(@RequestBody LoginRequest loginRequest){
         try{
             services.logIn(loginRequest);
         }catch( DiaryNotFoundException error){return error.getMessage();}
         return "log in successful";
     }
-    @PostMapping("/logOut")
-    public String logOut(String  userName){
+    @PatchMapping("/logOut/{userName}")
+    public String logOut(@PathVariable("userName") String  userName){
         try{
             services.logOut(userName);
         }catch(DiaryNotFoundException error){
@@ -48,17 +46,12 @@ public class DiaryController{
         return "log out successful";
     }
     @PatchMapping("/createEntry")
-    public String createEntry(EntryRequest entry){
-        try{
+    public List<String> createEntry(EntryRequest entry){
         services.createEntry(entry);
-        }catch(DiaryNotFoundException error ){
-            System.out.println(error.getMessage( ));
-            return error.getMessage();
-        }
-        return "Entry created successfully";
+        return Collections.singletonList("Created Successfully.");
     }
-    @PatchMapping("/deleteEntry")
-    public String deleteEntry(DeleteEntryRequest request1){
+    @DeleteMapping("/deleteEntry/{entryID}")
+    public String deleteEntry(@PathVariable("entryID") int id, @RequestParam(name = "userName",defaultValue="") DeleteEntryRequest request1){
         try{
              services.deleteEntry(request1);
             System.out.println("Entry deleted.");
@@ -69,7 +62,7 @@ public class DiaryController{
         return "Entry deleted.";
     }
     @PatchMapping("/updateEntry")
-    public String updateEntry(EntryRequest entryRequest){
+    public String updateEntry(@RequestBody() EntryRequest entryRequest){
         try{
             services.updateEntry(entryRequest);
         }catch(DiaryNotFoundException error){
