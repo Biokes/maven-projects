@@ -28,7 +28,7 @@ public class DiaryServiceImpo implements DiaryServices{
     private void validate(RegisterDiary request){
         if( request.getUserName( ).isEmpty( )||request.getPassword( ).isEmpty( ) )
             throw new InvalidDetailsException( );
-       for( Diary diary : repo.findAll( )){
+       for( Diary diary : repo.findAll()){
            if(diary.getUsername().equalsIgnoreCase(request.getUserName()))
                throw new UserAlreadyExistException();
        }
@@ -64,7 +64,7 @@ public class DiaryServiceImpo implements DiaryServices{
     public int countEntries(){
         return (int)entryRepo.count( );
     }
-    public String createEntry(EntryRequest request){
+    public void createEntry(EntryRequest request){
         if(!findDiaryBy(request.getUserName()).isLocked()){
             Entry entry=new Entry( );
             entry.setTitle(request.getTitle( ));
@@ -72,7 +72,7 @@ public class DiaryServiceImpo implements DiaryServices{
             entry.setAuthor(request.getUserName( ));
             int id=(int)entryRepo.count( );
             entry.setId(++id);
-            return entryRepo.save(entry);
+            entryRepo.save(entry);
         }
         throw new DiaryIsLockedException();
 
@@ -91,11 +91,11 @@ public class DiaryServiceImpo implements DiaryServices{
         }
         throw new DiaryIsLockedException( );
     }
-    public String updateEntry(EntryRequest request){
+    public void updateEntry(EntryRequest request){
         if( findDiaryBy(request.getUserName( )).isLocked( ) ){
             throw new DiaryIsLockedException( );
         }
-        return entryRepo.update(request);
+        entryRepo.update(request);
     }
 }
 

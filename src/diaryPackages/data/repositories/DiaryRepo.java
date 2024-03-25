@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface DiaryRepo extends MongoRepository<Entry, String>{
+public interface DiaryRepo extends MongoRepository<Diary, String>{
 
     Diary findByUserName(String userName);
 

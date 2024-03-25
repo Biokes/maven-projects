@@ -50,8 +50,7 @@ public class DiaryController{
     @PatchMapping("/createEntry")
     public String createEntry(EntryRequest entry){
         try{
-        String output = services.createEntry(entry);
-            System.out.println(output);
+        services.createEntry(entry);
         }catch(DiaryNotFoundException error ){
             System.out.println(error.getMessage( ));
             return error.getMessage();
@@ -72,7 +71,7 @@ public class DiaryController{
     @PatchMapping("/updateEntry")
     public String updateEntry(EntryRequest entryRequest){
         try{
-            System.out.println(services.updateEntry(entryRequest));
+            services.updateEntry(entryRequest);
         }catch(DiaryNotFoundException error){
             System.out.println(error.getMessage( ));
             return error.getMessage();

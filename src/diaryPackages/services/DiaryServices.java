@@ -22,9 +22,9 @@ public interface DiaryServices{
 
     int countEntries();
 
-    String createEntry(EntryRequest request);
+    void createEntry(EntryRequest request);
 
     void deleteEntry(DeleteEntryRequest request);
 
-    String updateEntry(EntryRequest request);
+    void updateEntry(EntryRequest request);
 }
