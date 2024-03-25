@@ -1,6 +1,4 @@
 package services;
-
-
 import data.moodels.Diary;
 import data.moodels.Entry;
 import data.repositories.DiaryRepo;
@@ -12,7 +10,6 @@ import dtos.dtos.EntryRequest;
 import exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class DiaryServiceImpo implements DiaryServices{
     @Autowired
@@ -21,9 +18,10 @@ public class DiaryServiceImpo implements DiaryServices{
     private  EntryRepo entryRepo;
     public void createDiary(RegisterDiary request){
         validate(request);
-        Diary diary=new Diary( );
+        Diary diary = new Diary( );
         diary.setUsername(request.getUserName( ));
         diary.setPassword(request.getPassword( ));
+        repo.save(diary);
         }
     private void validate(RegisterDiary request){
         if( request.getUserName( ).isEmpty( )||request.getPassword( ).isEmpty( ) )

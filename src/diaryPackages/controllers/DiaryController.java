@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 public class DiaryController{
     @Autowired
-    private final DiaryServices services = new DiaryServiceImpo();
+    private DiaryServices services;
     @PostMapping("/sign_up")
     public String createDiary(@RequestBody RegisterDiary request){
         try{
