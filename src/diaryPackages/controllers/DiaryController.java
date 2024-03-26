@@ -1,6 +1,4 @@
 package controllers;
-
-
 import dtos.DeleteEntryRequest;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import services.DiaryServices;
 import java.util.Collections;
 import java.util.List;
-
 @RestController
 public class DiaryController{
     @Autowired
@@ -52,7 +49,7 @@ public class DiaryController{
     public String deleteEntry(@PathVariable("entryId") int id, @RequestParam(name = "userName",defaultValue = "")String userName){
         try{
             DeleteEntryRequest request = new DeleteEntryRequest();
-            request.setId((int)id);
+            request.setId(id);
             request.setUserName(userName);
             services.deleteEntry(request);
             return  "deleted Successfully.";
