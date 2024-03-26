@@ -1,7 +1,6 @@
 package services;
 import data.moodels.Diary;
 import data.repositories.DiaryRepo;
-import data.repositories.EntryRepo;
 import dtos.DeleteEntryRequest;
 import dtos.LoginRequest;
 import dtos.RegisterDiary;
@@ -10,13 +9,12 @@ import exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Optional;
 @Service
 public class DiaryServiceImpo implements DiaryServices{
     @Autowired
     private  DiaryRepo repo ;
-    @Autowired
-    private  EntryRepo entryRepo;
     @Autowired
     private EntryServicesImpo entryServicesImpo;
     public void createDiary(RegisterDiary request){
@@ -64,7 +62,7 @@ public class DiaryServiceImpo implements DiaryServices{
         return diary.get();
     }
     public int countEntries(){
-        return (int)entryRepo.count( );
+        return (int)entryServicesImpo.countEntries( );
     }
     public void createEntry(EntryRequest request){
         if(!findDiaryBy(request.getUserName()).isLocked()){

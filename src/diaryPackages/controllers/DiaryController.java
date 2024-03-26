@@ -6,11 +6,10 @@ import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 import exceptions.DiaryNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.DiaryServiceImpo;
 import services.DiaryServices;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -18,14 +17,14 @@ import java.util.List;
 public class DiaryController{
     @Autowired
     private DiaryServices services;
-    @PostMapping("/sign_up")
+    @PostMapping("/sign-up")
     public String createDiary(@RequestBody RegisterDiary request){
         try{
             services.createDiary(request);
+            return "Diary created successfully.";
         }catch( DiaryNotFoundException error){
             return error.getMessage( );
         }
-        return "Diary created successfully.";
     }
     @PatchMapping("/login")
     public String logIn(@RequestBody LoginRequest loginRequest){
