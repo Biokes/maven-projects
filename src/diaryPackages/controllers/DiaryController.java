@@ -6,7 +6,6 @@ import dtos.LoginRequest;
 import dtos.RegisterDiary;
 import dtos.dtos.EntryRequest;
 import exceptions.DiaryNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import services.DiaryServices;
