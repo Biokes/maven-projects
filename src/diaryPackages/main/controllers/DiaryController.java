@@ -49,7 +49,7 @@ public class DiaryController{
         return Collections.singletonList("Created Successfully.");
     }
     @GetMapping("getEntry/{entryId}")
-    public String deleteEntry(@PathVariable("entryId") int id, @RequestParam(name = "userName",defaultValue = "")String userName){
+    public String deleteEntry(@PathVariable("entryId") String id, @RequestParam(name = "userName", defaultValue = "") String userName){
         try{
             DeleteEntryRequest request = new DeleteEntryRequest();
             request.setId(id);
@@ -62,7 +62,7 @@ public class DiaryController{
         }
     }
     @DeleteMapping("/deleteEntry/{entryID}")
-    public String deleteEntry(@PathVariable("entryID") int id, @RequestParam(name = "userName",defaultValue="") DeleteEntryRequest request1){
+    public String deleteEntry(@PathVariable("entryID") String id, @RequestParam(name = "userName", defaultValue = "") DeleteEntryRequest request1){
         try{
             diaryServices.deleteEntry(request1);
             System.out.println("Entry deleted.");
