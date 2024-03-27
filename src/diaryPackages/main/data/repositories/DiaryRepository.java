@@ -10,5 +10,5 @@ public interface DiaryRepository extends MongoRepository<Diary, String>{
 
     Diary findDiaryByUsername(String userName);
 
-    void deleteDiary(Diary diaryBy);
+    void deleteDiaryByUsername(String userName);
 }

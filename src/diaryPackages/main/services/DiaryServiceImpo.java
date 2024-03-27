@@ -18,11 +18,6 @@ public class DiaryServiceImpo implements DiaryServices{
     private DiaryRepository repo;
     @Autowired
     private EntryServicesImpo entryServicesImpo;
-
-    @Autowired
-    public DiaryServiceImpo(DiaryRepository repository){
-        repo=repository;
-    }
     public void createDiary(RegisterDiary request){
         validate(request);
         Diary diary = new Diary( );
@@ -54,7 +49,7 @@ public class DiaryServiceImpo implements DiaryServices{
             throw new DiaryNotFoundException( );
         if( !(repo.findDiaryByUsername(request.getUserName( )).getPassword( )).equals(request.getPassword( )) )
             throw new IncorrectPasswordException( );
-        repo.deleteDiary(findDiaryBy(request.getUserName( )));
+        repo.deleteDiaryByUsername(findDiaryBy(request.getUserName( )).getUsername( ));
     }
     public void logOut(String userName){
         if( repo.findDiaryByUsername(userName)==null )

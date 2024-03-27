@@ -20,19 +20,27 @@ public class EntryServicesImpo implements EntryServices{
             entry.setTitle(request.getTitle( ));
             entry.setBody(request.getBody( ));
             entry.setAuthor(request.getUserName( ));
-            int id=(int)entryRepo.count( );
-            entry.setId(++id);
             entryRepo.save(entry);
     }
     public void deleteEntry(DeleteEntryRequest request){
                 for( Entry entry : entryRepo.findAll()){
-                    if( entry.getId( )==request.getId( ) )
-                        entryRepo.deleteEntryById(entry.getId( ));
+                    if( entry.getId( ).equals(request.getId( )) )
+                        entryRepo.deleteById(entry.getId( ));
                     return;
                 }
     }
     public void updateEntry(EntryRequest request){
-        entryRepo.update(request);
+        Entry newEntry=new Entry( );
+        for( Entry entry : entryRepo.findAll( ) )
+            if( entry.getId( ).equals(request.getId( )) ){
+                newEntry.setTitle(request.getTitle( ));
+                newEntry.setBody(request.getBody( ));
+                newEntry.setDate(entry.getDate( ));
+                newEntry.setAuthor(entry.getAuthor( ));
+                newEntry.setId(entry.getId( ));
+                entryRepo.save(newEntry);
+            }
+
     }
 
 }

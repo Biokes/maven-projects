@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Document
 public class Entry{
     @Id
-    private int id;
+    private String id;
     private String author;
     private String body;
     private String title;

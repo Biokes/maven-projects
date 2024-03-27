@@ -7,5 +7,5 @@ public class EntryRequest{
     private String userName;
     private String title;
     private String body;
-    private int id;
+    private String id;
 }
